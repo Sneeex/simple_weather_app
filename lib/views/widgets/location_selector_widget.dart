@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';   
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Future locationSelector({
@@ -6,7 +6,7 @@ Future locationSelector({
   required GlobalKey<FormState> locationFormKey,
   required TextEditingController locationFormController,
   required Function(String city) onConfirmationPress,
-}){
+}) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -42,11 +42,11 @@ Future locationSelector({
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Bitte gib einen Standort ein';
-              } else if(RegExp(r'\d').hasMatch(value)){
+              } else if (RegExp(r'\d').hasMatch(value)) {
                 return 'Bitte gib einen Ort ein';
               }
               return null;
-            }
+            },
           ),
         ),
         actions: [
@@ -59,10 +59,10 @@ Future locationSelector({
                 fontWeight: FontWeight.normal,
               ),
             ),
-            onPressed: (){
+            onPressed: () {
               Navigator.of(context).pop();
               locationFormController.clear();
-            },                            
+            },
           ),
           TextButton(
             child: Text(
@@ -73,14 +73,13 @@ Future locationSelector({
                 fontWeight: FontWeight.bold,
               ),
             ),
-            onPressed: () async{
-              print(locationFormKey.currentState);
+            onPressed: () async {
               if (locationFormKey.currentState!.validate()) {
                 Navigator.of(context).pop();
                 await onConfirmationPress(locationFormController.text);
-                locationFormController.clear();                                        
+                locationFormController.clear();
               }
-            }, 
+            },
           ),
         ],
       );

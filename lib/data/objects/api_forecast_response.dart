@@ -1,4 +1,4 @@
-import 'dart:convert';
+// ignore_for_file: non_constant_identifier_names
 
 class ApiForecastResponse {
   final Location location;
@@ -134,11 +134,7 @@ class Condition {
   final String icon;
   final int code;
 
-  const Condition({
-    required this.text,
-    required this.icon,
-    required this.code,
-  });
+  const Condition({required this.text, required this.icon, required this.code});
 
   factory Condition.fromJson(Map<String, dynamic> json) {
     return Condition(
@@ -184,9 +180,7 @@ class Forecastday {
       date_epoch: json['date_epoch'],
       day: Day.fromJson(json['day']),
       astro: Astro.fromJson(json['astro']),
-      hour: List<Hour>.from(
-        json['hour'].map((x) => Hour.fromJson(x)),
-      ),
+      hour: List<Hour>.from(json['hour'].map((x) => Hour.fromJson(x))),
     );
   }
 }
